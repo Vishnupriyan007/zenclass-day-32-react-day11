@@ -1,0 +1,149 @@
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -70px 0;
+  }
+}
+
+.react-formik-ui {
+  .form-element {
+    .dropzone-wrapper {
+      .label {
+        display: block;
+        margin-bottom: 6px;
+      }
+      .dropzone {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 2px dashed #c8c8c8;
+        outline: none;
+        background-color: #f0f0f0;
+        cursor: pointer;
+        p.text {
+          width: 100%;
+          text-align: center;
+          color: #787878;
+        }
+        &--active {
+          border: 2px solid;
+          background-image: repeating-linear-gradient(-45deg, #f0f0f0, #f0f0f0 25px, #c8c8c8 25px, #c8c8c8 50px);
+          animation: progress 1s linear infinite !important;
+          background-size: 150% 100%;
+        }
+        &--disabled {
+          background-color: $white;
+          opacity: 0.5;
+          p.text {
+            color: $black;
+          }
+        }
+        img {
+          max-height: 130px;
+          margin: 0 8px 8px 0;
+          transition: 0.8s opacity;
+          border-radius: 5px;
+          object-fit: contain;
+        }
+        .icon-wrapper {
+          width: 45px;
+          margin: 5px 5px 0;
+          p {
+            font-size: 10px;
+            text-align: center;
+            line-height: 10px;
+            word-break: break-all;
+            margin: 5px 0;
+          }
+          .icon {
+            height: 55px;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            background-color: $blue;
+            box-sizing: border-box;
+            overflow: hidden;
+
+            &:after {
+              content: '';
+              position: absolute;
+              display: block;
+              top: 0;
+              right: 0;
+              width: 0;
+              height: 0;
+              border-radius: 0 2px;
+              transition: all 0.2s linear;
+              backface-visibility: hidden;
+              background: linear-gradient(45deg, lighten($blue, 15%) 50%, #f0f0f0 50%);
+            }
+            i {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: block;
+              font-size: 10px;
+              color: $white;
+              font-weight: 500;
+              &:before,
+              &:after {
+                display: block;
+                transition: all 0.2s linear;
+              }
+              &:before {
+                content: '< >';
+                text-align: center;
+                font-size: 12px;
+                opacity: 0;
+                transform: translateY(5px);
+              }
+              &:after {
+                content: attr(title);
+                text-align: center;
+                transform: translateY(-7px);
+              }
+            }
+            &:hover {
+              border-radius: 2px 4px 2px 2px;
+              &:after {
+                width: 12px;
+                height: 12px;
+              }
+              i {
+                &:before {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
+                &:after {
+                  transform: translateY(0);
+                }
+              }
+            }
+          }
+        }
+        .file-count {
+          width: 100%;
+          text-align: left;
+          padding-top: 10px;
+        }
+        &:hover {
+          img {
+            opacity: 0.3;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .clear-button {
+        margin-top: 10px;
+      }
+    }
+  }
+}
